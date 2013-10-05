@@ -34,36 +34,36 @@ public class MergeSort extends AbstractSort {
 	 * @param array
 	 * @param temp
 	 * @param left
+	 * @param middle
 	 * @param right
-	 * @param rightEnd
 	 * @return
 	 */
-	private int[] merge(int[] array, int[] temp, int left, int right, int rightEnd) {
-		int leftEnd = right - 1;
-		int k = left;
-		int num = rightEnd - left + 1;
+	private int[] merge(int[] array, int[] temp, int left, int middle, int right) {
+		int leftEnd = middle - 1;
+		int tempPos = left;
+		int numElements = right - left + 1;
 
-		while (left <= leftEnd && right <= rightEnd) {
-			if (array[left] < array[right]) {
-				temp[k++] = array[left++];
+		while (left <= leftEnd && middle <= right) {
+			if (array[left] < array[middle]) {
+				temp[tempPos++] = array[left++];
 			} else {
-				temp[k++] = array[right++];
+				temp[tempPos++] = array[middle++];
 			}
 		}
 
 		// Copy rest of first half
 		while (left <= leftEnd) {
-			temp[k++] = array[left++];
+			temp[tempPos++] = array[left++];
 		}
 
 		// Copy rest of right half
-		while (right <= rightEnd) {
-			temp[k++] = array[right++];
+		while (middle <= right) {
+			temp[tempPos++] = array[middle++];
 		}
 
 		// Copy temp back
-		for (int i = 0; i < num; i++, rightEnd--) {
-			array[rightEnd] = temp[rightEnd];
+		for (int i = 0; i < numElements; i++, right--) {
+			array[right] = temp[right];
 		}
 
 		return array;

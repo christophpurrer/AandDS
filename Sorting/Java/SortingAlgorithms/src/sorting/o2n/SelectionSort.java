@@ -11,7 +11,7 @@ public class SelectionSort extends AbstractSort {
 		for (int i = 0; i < length - 1; i++) {
 			int iMin = i;
 
-			// find the min element, assume it is the first one
+			// find the minimum element, assume it is the first one
 			for (int j = i + 1; j < length; j++) {
 				if (array[j] < array[iMin]) {
 					iMin = j;

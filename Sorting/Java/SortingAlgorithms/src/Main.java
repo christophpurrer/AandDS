@@ -25,6 +25,9 @@ public class Main {
 		int[] randomNumbers = generateRandomArray(DefaultArrayLength);
 
 		System.out.println("## Sorting algorithms n^2 for " + DefaultArrayLength + " elements ##");
+		int[] randomInsertionNumbers = new int[] { 7, 8, 5, 2, 4, 6, 3 };
+		sortNumbers(randomInsertionNumbers, new InsertionSort());
+
 		sortNumbers(randomNumbers, new BubbleSortSimple());
 		sortNumbers(randomNumbers, new BubbleSort());
 		sortNumbers(randomNumbers, new SelectionSort());
@@ -40,19 +43,19 @@ public class Main {
 	 * helper method to perform sorting
 	 * 
 	 * @param randomNumbers
-	 * @param bubbleSort
+	 * @param abstractSort
 	 */
-	private void sortNumbers(int[] randomNumbers, AbstractSort bubbleSort) {
+	private void sortNumbers(int[] randomNumbers, AbstractSort abstractSort) {
 		int[] numbers = new int[randomNumbers.length];
 		for (int i = 0; i < numbers.length; i++) {
 			numbers[i] = randomNumbers[i];
 		}
 
-		System.out.println(bubbleSort.getClass().getName() + Space);
-		printArray(numbers, bubbleSort);
-		numbers = bubbleSort.sort(numbers);
-		bubbleSort.printProcessingTime();
-		printArray(numbers, bubbleSort);
+		System.out.println(abstractSort.getClass().getName() + Space);
+		printArray(numbers, abstractSort);
+		numbers = abstractSort.sort(numbers);
+		abstractSort.printProcessingTime();
+		printArray(numbers, abstractSort);
 		System.out.println();
 	}
 
